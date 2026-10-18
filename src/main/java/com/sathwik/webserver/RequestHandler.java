@@ -69,6 +69,9 @@ final class RequestHandler implements Runnable {
                 HttpRequest request = parser.parse(socket.getInputStream());
                 summary = request.getMethod() + " " + request.getPath();
                 response = handle(request);
+          	if ("HEAD".equals(request.getMethod())) {
+    response = response.withoutBody();
+}
             } catch (HttpParseException e) {
                 parseFailed = true;
                 response = HttpResponse.text(e.getStatus(), e.getMessage());

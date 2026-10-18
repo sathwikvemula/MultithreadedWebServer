@@ -193,12 +193,15 @@ class ServerIntegrationTest {
     }
 
     @Test
-    void headRequestsAreNotSupported() throws Exception {
-        Server server = startDemo();
-        Response response = TestHttpClient.send(server.getPort(),
-                "HEAD /hello HTTP/1.1\r\nHost: localhost\r\n\r\n");
-        assertEquals(405, response.status);
-    }
+   void headRequestsAreNotSupportedAndReturnNoBody() throws Exception {
+    Server server = startDemo();
+    Response response = TestHttpClient.send(server.getPort(),
+            "HEAD /hello HTTP/1.1\r\nHost: localhost\r\n\r\n");
+
+    assertEquals(405, response.status);
+    assertEquals("", response.body);
+    assertEquals("GET", response.headers.get("Allow"));
+}
 
     // ---- malformed and abusive requests -------------------------------
 

@@ -76,6 +76,18 @@ public final class HttpResponse {
         copy.put(name, value);
         return new HttpResponse(statusCode, statusMessage, contentType, body, copy);
     }
+   /**
+ * Returns an equivalent response with an empty body.
+ */
+public HttpResponse withoutBody() {
+    return new HttpResponse(
+            statusCode,
+            statusMessage,
+            contentType,
+            "",
+            headers
+    );
+}
 
     public int getStatusCode() {
         return statusCode;
