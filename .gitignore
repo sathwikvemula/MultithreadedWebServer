@@ -1,0 +1,20 @@
+# Build output
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+out/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and compiled classes
+*.log
+*.class
